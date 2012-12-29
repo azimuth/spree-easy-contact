@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  match '/contact-us' => 'contacts#new', :as => :contact
+  # add the following (or something similar) to your application's routes.rb file:
+  # match '/contact-us' => 'contacts#new', :as => :contact
   
   resources :contacts, :controller => 'contacts'
   
