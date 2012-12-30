@@ -15,8 +15,6 @@
     <%= hook :admin_feedback_config_index_header do %>
     <th><%= t("auto_response_email_subject") %></th>
     <th><%= t("auto_response_email_reply_to") %></th>
-    <th><%= t("auto_response_email_body_html") %></th>
-    <th><%= t("auto_response_email_body_text") %></th>
     <% end %>
     <th>
       <%= hook :admin_feedback_config_index_header_actions %>
@@ -28,8 +26,6 @@
     <%= hook :admin_feedback_configs_index_rows, locals do %>
     <td><%= feedback_config.auto_response_email_subject %></td>
     <td><%= feedback_config.auto_response_email_reply_to %></td>
-    <td><%= feedback_config.auto_response_email_body_html %></td>
-    <td><%= feedback_config.auto_response_email_body_text %></td>
     <% end %>
     <td class="actions">
       <%= hook :admin_feedback_configs_index_rows_actions, locals do %>
