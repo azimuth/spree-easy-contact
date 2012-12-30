@@ -7,4 +7,11 @@ class ContactMailer < ActionMailer::Base
     @message = message
     mail(:to => message.topic.email, :subject => subject, :reply_to => message.email) 
   end
+  def message_recieved_email(message)
+    @feedback_config = FeedbackConfig.first
+    mail(:to => message.email, :subject => @feedback_config.auto_response_email_subject, :reply_to => @feedback_config.auto_response_email_reply_to) do |format|
+      format.html { render :text => @feedback_config.auto_response_email_body_html }
+      format.text { render :text => @feedback_config.auto_response_email_body_text }
+    end
+  end
 end

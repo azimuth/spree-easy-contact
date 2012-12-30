@@ -1,0 +1,43 @@
+<div class="toolbar">
+  <ul class="actions">
+    <li id="new_feedback_config_link">
+      <%= button_link_to t("new_feedback_config"), new_object_url, {:remote => true, :icon => "add"} %>
+    </li>
+  </ul>
+  <br class="clear" />
+</div>
+<h1><%= t("feedback_configs") %></h1>
+
+<div id="new_feedback_config"></div>
+
+<table class="index">
+  <tr>
+    <%= hook :admin_feedback_config_index_header do %>
+    <th><%= t("auto_response_email_subject") %></th>
+    <th><%= t("auto_response_email_reply_to") %></th>
+    <th><%= t("auto_response_email_body_html") %></th>
+    <th><%= t("auto_response_email_body_text") %></th>
+    <% end %>
+    <th>
+      <%= hook :admin_feedback_config_index_header_actions %>
+    </th>
+  </tr>
+  <% @feedback_configs.each do |feedback_config| %>
+  <tr id="dom_id feedback_config">
+    <%- locals = {:feedback_config => feedback_config} %>
+    <%= hook :admin_feedback_configs_index_rows, locals do %>
+    <td><%= feedback_config.auto_response_email_subject %></td>
+    <td><%= feedback_config.auto_response_email_reply_to %></td>
+    <td><%= feedback_config.auto_response_email_body_html %></td>
+    <td><%= feedback_config.auto_response_email_body_text %></td>
+    <% end %>
+    <td class="actions">
+      <%= hook :admin_feedback_configs_index_rows_actions, locals do %>
+      <%= link_to_edit feedback_config %>
+      &nbsp;
+      <%= link_to_delete feedback_config %>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>

@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :contacts
     resources :topics
+    resources :feedback_configs
   end
 end
