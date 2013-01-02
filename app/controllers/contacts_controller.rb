@@ -10,6 +10,8 @@ class ContactsController < Spree::BaseController
   end
   
   def create
+    @conversation = Conversation.create
+    params[:contact][:conversation_id] = @conversation
     @contact = Contact.new(params[:contact] || {})
     respond_to do |format|
       if @contact.valid? &&  @contact.save

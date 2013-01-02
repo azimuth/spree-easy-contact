@@ -3,7 +3,6 @@ class Admin::TopicsController < Admin::BaseController
   
   create.wants.html {redirect_to collection_path}
   update.wants.html {redirect_to collection_path}
-  #binding.pry
   new_action.response do |wants|
     wants.html {render :action => :new, :layout => !request.xhr?}
   end
