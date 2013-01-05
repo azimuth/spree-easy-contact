@@ -7,8 +7,8 @@
     <li<%== ' class="active"' if current == 'Contact Details' %>>
       <%= link_to t("contact_details"), object_url(@contact) %>
     </li>
-    <li<%== ' class="active"' if current == 'ContactResend' %>>
-      <%= link_to t("resend"), "#" %>
+    <li<%== ' class="active"' if current == 'Reply' %>>
+      <%= link_to t("reply"), "/admin/contacts/new" , {conversation_id: @conversation } %>
     </li>
   <% end %>
   </ul>

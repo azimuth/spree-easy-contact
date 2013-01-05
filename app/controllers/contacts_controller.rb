@@ -10,7 +10,7 @@ class ContactsController < Spree::BaseController
   end
   
   def create
-    @conversation = Conversation.create
+    @conversation = Conversation.create(status: "pending")
     params[:contact][:conversation_id] = @conversation
     @contact = Contact.new(params[:contact] || {})
     respond_to do |format|

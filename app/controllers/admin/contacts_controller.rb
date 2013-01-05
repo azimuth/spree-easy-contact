@@ -1,12 +1,19 @@
 class Admin::ContactsController < Admin::BaseController
   resource_controller
 
-  def create
-    unless params[:contact][:conversation_id]
-      @conversation = Conversation.new
-      params[:contact][:conversation_id] = @conversation
-    end
+  def show
+    contact = Contact.find(params[:id])
+    #binding.pry
+    @conversation = Conversation.find(contact.conversation_id)
     super
   end
+  
+  def new
+      binding.pry
+     super 
+  end
+  
+  
+
   
 end
