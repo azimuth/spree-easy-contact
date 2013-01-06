@@ -2,7 +2,8 @@ class ContactsController < Spree::BaseController
   before_filter :load_topics
   
   def new
-    @contact = Contact.new
+    @conversation = Conversation.new
+    @contact = Contact.new(:conversation => @conversation)
   end
   
   def edit
@@ -10,14 +11,14 @@ class ContactsController < Spree::BaseController
   end
   
   def create
-    @conversation = Conversation.create(status: "pending")
+    @conversation = Conversation.create(:status => "pending", :topic_id => params[:conversation][:topic])
     params[:contact][:conversation_id] = @conversation
     @contact = Contact.new(params[:contact] || {})
     respond_to do |format|
-      if @contact.valid? &&  @contact.save
+      if verify_recaptcha(@contact) && @contact.valid? &&  @contact.save
         ContactMailer.message_email(@contact).deliver
-        ContactMailer.message_recieved_email(@contact).deliver
-        format.html { redirect_to(root_path, :notice => t("message_sended")) }
+        ContactMailer.message_received_email(@contact).deliver
+        format.html { redirect_to(root_path, :notice => t("message_sent")) }
       else
         format.html { render :action => "new" }
       end

@@ -1,6 +1,6 @@
 <%= t('name') %>:  <%= @message.name %>
 <%= t('email') %>: <%= @message.email %>
-<%= t('topic') %>: <%= @message.topic.name %>
+<%= t('topic') %>: <%= @message.conversation.topic.name %>
 <% unless @message.order_number.blank? %> 
   <%= t('order') %>: <%= @message.order_number.upcase %> <%= "http://#{Spree::Config[:site_url]}/admin/orders/#{@message.order_number.upcase}"%>
 <% end %> 

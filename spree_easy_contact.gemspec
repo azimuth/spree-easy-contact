@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.8.7'
   s.license     = 'BSD'
 
-  s.authors           = ['Mathias Standaert']
+  s.authors           = ['Mathias Standaert', 'Day Waterbury', 'Rebekah Waterbury' 'Christopher Maujean']
   s.date              = %q(2011-02-08)
   s.email             = 'contact@organicweb.fr'
   s.homepage          = %q{https://github.com/organicweb/spree-easy-contact}
@@ -19,5 +19,5 @@ Gem::Specification.new do |s|
   s.has_rdoc = true
 
   s.add_dependency('spree_core', '>= 0.40.0')
-  s.add_dependency('honeypot-captcha')
+  s.add_dependency('recaptcha')
 end
