@@ -20,7 +20,7 @@
     <div class="field">
       <%= f.label :order_number, t("order_number") %> (<%= t("optional") %>)<br />
       <% if current_user %>
-        <%= f.select :order_number, options_for_select([''] + current_user.orders.map{|o| o.number }) %>
+        <%= f.select :order_number, options_for_current_orders %>
       <% else %>
         <%= f.text_field :order_number %>
       <% end %>
