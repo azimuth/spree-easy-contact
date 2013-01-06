@@ -20,7 +20,6 @@ en:
   new_topic: Add a topic
   from: from
   message_from: Message from
-  new_feedback_config: New Config
   auto_response_email_subject: Response Subject
   auto_response_email_reply_to: Response Reply-To
   auto_response_email_body_html: Response HTML
