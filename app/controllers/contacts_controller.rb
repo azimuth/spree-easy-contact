@@ -9,7 +9,7 @@ class ContactsController < Spree::BaseController
   def edit
     redirect_to new_contact_path
   end
-  
+
   def create
     @conversation = Conversation.create(:status => "pending", :topic_id => params[:conversation][:topic])
     params[:contact][:conversation_id] = @conversation
