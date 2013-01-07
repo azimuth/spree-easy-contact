@@ -7,11 +7,11 @@
     <%= hook :contact_inside_form do %>             
     <div class="field">
       <%= f.label :name, t("name") %><br />
-      <%= f.text_field :name %>
+      <%= f.text_field :name, :value => ( current_user && current_user.bill_address ) ? current_user.bill_address.full_name : "" %>
     </div>
     <div class="field">
       <%= f.label :email, t("email") %><br />
-      <%= f.text_field :email %>
+      <%= f.text_field :email, :value => current_user ? current_user.email : "" %>
     </div>
 	<div class="field">
       <%= f.label :telephone, t("telephone") %><br />
