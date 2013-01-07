@@ -1,0 +1,16 @@
+<% @body_id = 'contact_us' %>
+<div id="contact-us">
+  <h2><%= t("response") %></h2>
+  <%= hook :contact do %>
+  <%= render "shared/error_messages", :target => contact %>
+  <%= form_for(contact, :url => admin_contacts_path(contact)) do |f| %>
+    <%= hook :contact_inside_form do %>             
+    <div class="field">
+      <%= f.text_area :message, :cols => '77', :rows => '8' %>
+    </div>
+    <%= f.hidden_field :conversation_id %>
+    <div class="action"><%= f.submit t("send_message"), :class => "button primary" %></div>
+    <% end %>
+  <% end %>
+  <% end %>
+</div>

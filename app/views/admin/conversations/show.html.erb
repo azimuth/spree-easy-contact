@@ -1,0 +1,19 @@
+<h2>Conversation w/ <%= @conversation.contacts.first.name %>&nbsp;&lt;<%= @conversation.contacts.first.email %>&gt;</h2>
+<h2>RE: <%= @conversation.topic.name %></h2>
+<div class="adr">
+  <h4><%= t("details") %></h4>
+  <p>
+    Name: <%= @conversation.contacts.first.name %><br />
+    Email: <%= @conversation.contacts.first.email %><br />
+    Phone: <%= @conversation.contacts.first.telephone %><br />
+    Order Number: <%= @conversation.contacts.first.order_number ? @conversation.contacts.first.order_number : 'None' %>
+  </p>
+  <h4><%= t("status") %></h4>
+  <p><strong><%= @conversation.status.capitalize %></strong> at <%= @conversation.contacts.first.created_at %></p>
+</div> 
+<div style="clear:both;">
+<%= render :partial => 'contact', :collection =>  @conversation.contacts %>
+</div>
+<div style="clear:both;">
+<%= render :partial => "new_contact", :locals => { :contact => @conversation.contacts.build } %>
+</div>
