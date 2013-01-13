@@ -1,6 +1,6 @@
 <%= hook :admin_contact_show do %>
 <div class="adr" style="clear:both;">
-  <h4><%= t("message_from") + " #{contact.name}" %></h4>
+  <h4><%= t("message_from") + " #{contact.name} sent " + contact.created_at.to_s %></h4>
   <p>
     <%= contact.message %>
   </p>
