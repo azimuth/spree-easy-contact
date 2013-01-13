@@ -12,7 +12,7 @@ fr-FR:
   contact_list: Liste des demandes
   optional: optionnel
   send_message: Envoyer le message
-  message_sent: Message envoyé
+  message_sent: Votre message a été envoyé. Merci!
   topics: Objet des demandes de contact
   topic: Objet
   topics_description: "Créez les objets de demandes de contact, choisissez l'adresse email qui doit lui correspondre"

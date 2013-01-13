@@ -13,7 +13,7 @@ en:
   contact_list: Contacts list
   send_message: Send message
   reply: Reply
-  message_sent: Message sent
+  message_sent: Your message has been sent. Thank you!
   topics: Contact Form Topic
   topic: Topic
   topics_description: "Setup topics for the contact form, choose wich email should be routed to"
