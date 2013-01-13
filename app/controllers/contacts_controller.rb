@@ -13,9 +13,9 @@ class ContactsController < Spree::BaseController
   def create
     @conversation = Conversation.create(:status => "pending", :topic_id => params[:conversation][:topic])
     params[:contact][:conversation_id] = @conversation
-    @contact = Contact.new(params[:contact] || {})
+    @contact = @conversation.contacts.build(params[:contact] || {})
     respond_to do |format|
-      if verify_recaptcha(@contact) && @contact.valid? &&  @contact.save
+      if verify_recaptcha(@contact) && @contact.valid? && @contact.save
         ContactMailer.message_email(@contact).deliver
         ContactMailer.message_received_email(@contact).deliver
         format.html { redirect_to(root_path, :notice => t("message_sent")) }
