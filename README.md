@@ -23,6 +23,11 @@ rake db:migrate
 
 Set properly the mail method in the admin area (/admin/mail_methods)
 
+Add the following to your application initializers:
+
+Spree::Config.set(:recaptcha_public_key => '[your_recaptcha_public_key]')
+Spree::Config.set(:recaptcha_private_key => '[your_recaptcha_private_key]')
+
 And you're done !
 =================
 
