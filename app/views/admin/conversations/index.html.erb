@@ -1,32 +1,40 @@
-<h1><%= t("conversations")%></h1>
-<table class="index">
-  <tr>
-    <%= hook :admin_conversation_index_headers do %>
-      <th><%= t("name") %></th>
-      <th><%= t("email") %></th>
-      <th><%= t("topic") %></th>
-      <th><%= t("sent") %></th>
-    <% end %>
-    <th>
-      <%= hook :admin_conversation_index_header_actions %>
-    </th>
-  </tr>
-  <% @conversations.each do |conversation| %>
-    <tr id="<%= dom_id conversation %>">
-      <%- locals = {:conversation => conversation} %>
-      <%= hook :admin_conversation_index_rows, locals do %>
-        <td><%= conversation.contacts.first.name %></td>
-        <td><%= conversation.contacts.first.email %></td>
-        <td><%= conversation.topic.name %></td>
-        <td><%= conversation.created_at %></td>
+<h1><%= t("#{@requested_scope} conversations")%></h1>
+<%= link_to 'Show Open', admin_conversations_path(:search => 'open') %> |
+<%= link_to 'Show Closed', admin_conversations_path(:search => 'closed') %> |
+<%= link_to 'Show All', admin_conversations_path(:search => 'all') %>
+<br><br>
+<% if @conversations.count == 0 %>
+  <h2>There are no <%= @requested_scope %> conversations.</h2>
+<% else %>
+  <table class="index">
+    <tr>
+      <%= hook :admin_conversation_index_headers do %>
+        <th><%= t("name") %></th>
+        <th><%= t("email") %></th>
+        <th><%= t("topic") %></th>
+        <th><%= t("sent") %></th>
       <% end %>
-      <td class="actions">
-        <%= hook :admin_conversation_index_row_actions, locals do %>
-          <%= link_to_view conversation %>
-          &nbsp;
-          <%= link_to_delete conversation  %>
-        <% end %>
-      </td>
+      <th>
+        <%= hook :admin_conversation_index_header_actions %>
+      </th>
     </tr>
-  <% end %>
-</table>
+    <% @conversations.each do |conversation| %>
+      <tr id="<%= dom_id conversation %>">
+        <%- locals = {:conversation => conversation} %>
+        <%= hook :admin_conversation_index_rows, locals do %>
+          <td><%= conversation.contacts.first.name %></td>
+          <td><%= conversation.contacts.first.email %></td>
+          <td><%= conversation.topic.name %></td>
+          <td><%= conversation.created_at %></td>
+        <% end %>
+        <td class="actions">
+          <%= hook :admin_conversation_index_row_actions, locals do %>
+            <%= link_to_view conversation %>
+            &nbsp;
+            <%= link_to_delete conversation  %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

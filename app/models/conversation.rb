@@ -3,4 +3,8 @@ class Conversation < ActiveRecord::Base
   belongs_to :topic
 
   validates_presence_of :topic
+  
+  scope :open, where(:status => 'open')
+  scope :closed, where(:status => 'closed')
+  
 end
