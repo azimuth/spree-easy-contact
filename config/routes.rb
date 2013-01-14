@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resources :topics
-    resources :conversations
+    resources :conversations do
+      member do
+        post "complete"
+      end
+    end
     resources :contacts
   end
 end

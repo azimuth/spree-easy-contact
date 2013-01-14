@@ -9,7 +9,13 @@
     Order Number: <%= @conversation.contacts.first.order_number ? @conversation.contacts.first.order_number : 'None' %>
   </p>
   <h4><%= t("status") %></h4>
-  <p><strong><%= @conversation.status.capitalize %></strong> at <%= @conversation.contacts.first.created_at %></p>
+  <% unless @conversation.status == "closed" %> 
+      <%=  form_tag complete_admin_conversation_path do %>
+        <%= hidden_field_tag :conversation_id, @conversation.id %>
+        <%= submit_tag "Complete" %>
+      <% end %>
+  <% end %>
+  <p><strong><%= @conversation.status.capitalize %></strong> @ <%= @conversation.contacts.first.updated_at.strftime("%b %e, %Y %H:%M %z") %></p>
 </div> 
 <div style="clear:both;">
 <%= render :partial => 'contact', :collection =>  @conversation.contacts %>
