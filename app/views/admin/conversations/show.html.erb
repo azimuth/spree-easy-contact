@@ -1,4 +1,5 @@
-<h2>Conversation w/ <%= @conversation.contacts.first.name %>&nbsp;&lt;<%= @conversation.contacts.first.email %>&gt;</h2>
+<h2>Conversation w/ <%= @conversation.contacts.first.name %>&nbsp;&lt;<%= @conversation.contacts.first.email %>&gt;</h2> 
+<p><%= link_to "Show all conversations", admin_conversations_path %></p>
 <h2>RE: <%= @conversation.topic.name %></h2>
 <div class="adr">
   <h4><%= t("details") %></h4>
