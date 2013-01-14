@@ -11,7 +11,7 @@ class ContactsController < Spree::BaseController
   end
 
   def create
-    @conversation = Conversation.create(:status => "pending", :topic_id => params[:conversation][:topic])
+    @conversation = Conversation.create(:status => "open", :topic_id => params[:conversation][:topic])
     params[:contact][:conversation_id] = @conversation
     @contact = @conversation.contacts.build(params[:contact] || {})
     respond_to do |format|
