@@ -7,8 +7,7 @@ class Admin::ContactsController < Admin::BaseController
     @contact.email = current_user.email
     respond_to do |format|
       if @contact.valid? &&  @contact.save
-        ContactMailer.message_email(@contact).deliver
-        ContactMailer.message_received_email(@contact).deliver
+        ContactMailer.response_email(@contact).deliver
         flash[:notice] =  t("message_sent")
         format.html { redirect_to("/admin/conversations/#{@contact.conversation.id}") }
       else

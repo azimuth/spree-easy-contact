@@ -11,6 +11,14 @@ class ContactMailer < ActionMailer::Base
 
   # Mails a message to the customer, acknowledging the contact
   def message_received_email(message)
-    mail(:to => message.email, :subject => Spree::Config[:auto_response_email_subject], :reply_to => Spree::Config[:auto_response_email_reply_to])
+    mail(:to => message.conversation.contacts.first.email, :subject => Spree::Config[:auto_response_email_subject], :reply_to => Spree::Config[:auto_response_email_reply_to])
+  end
+  
+  # Mails a response to the customer
+  def response_email(message)
+    subject = "#{Spree::Config[:site_name]} - #{t("#{message.conversation.topic}")}"
+
+    @message = message
+    mail(:to => message.conversation.contacts.first.email, :subject => subject, :reply_to => Spree::Config[:auto_response_email_reply_to])
   end
 end
