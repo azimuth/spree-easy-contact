@@ -1,16 +1,16 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'azimuth_spree_easy_contact'
-  s.version     = '1.0.4'
-  s.summary     = 'Add gem summary here'
+  s.version     = '1.0.5'
+  s.summary     = 'So people can, um, contact you.'
   #s.description = 'Add (optional) gem description here'
   s.required_ruby_version = '>= 1.8.7'
   s.license     = 'BSD'
 
   s.authors           = ['Mathias Standaert', 'Day Waterbury', 'Rebekah Waterbury' 'Christopher Maujean']
   s.date              = %q(2011-02-08)
-  s.email             = 'contact@organicweb.fr'
-  s.homepage          = %q{https://github.com/organicweb/spree-easy-contact}
+  s.email             = 'day@azimuthonline.com'
+  s.homepage          = %q{https://github.com/azimuth/spree-easy-contact}
 
   s.files        = Dir['CHANGELOG', 'README.md', 'LICENSE', 'lib/**/*', 'app/**/*', 'public/**/*', 'db/**/*', 'config/**/*']
   s.require_path = 'lib'
